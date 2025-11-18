@@ -38,6 +38,24 @@ const TelegramIcon = (props: SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const MailIcon = (props: SVGProps<SVGSVGElement>) => (
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width={24} 
+        height={24} 
+        viewBox="0 0 24 24" 
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        {...props}
+    >
+        <rect width="20" height="16" x="2" y="4" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </svg>
+);
+
 export default function Home() {
   return (
     <div className="bg-black text-white font-sans">
@@ -214,7 +232,7 @@ export default function Home() {
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Контакты для связи и соц.сети</h2>
                 <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">Готовы начать? Напишите мне, и мы обсудим детали.</p>
                 <div className="mt-8">
-                    <a href="mailto:darya.kalashnikova.fitness@gmail.com" className="rounded-md bg-white px-8 py-3 text-purple-600 font-semibold text-lg hover:bg-gray-100 transition-colors">Написать на почту</a>
+                    <a href="mailto:dashkaak47@gmail.com" className="rounded-md bg-white px-8 py-3 text-purple-600 font-semibold text-lg hover:bg-gray-100 transition-colors">Написать на почту</a>
                 </div>
                 <div className="flex justify-center space-x-6 mt-8">
                   <a href="https://www.instagram.com/kalashnikovadaaa" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">
@@ -242,8 +260,11 @@ export default function Home() {
               <a href="https://t.me/kalashadasha" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <TelegramIcon className="w-7 h-7" />
               </a>
+               <a href="mailto:dashkaak47@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                <MailIcon className="w-7 h-7" />
+              </a>
             </div>
-            <p className="text-gray-500 mt-4">&copy; 2024. Все права защищены.</p>
+            <p className="text-gray-500 mt-4">&copy; 2025. Все права защищены.</p>
         </div>
       </footer>
     </div>
