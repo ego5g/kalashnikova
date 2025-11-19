@@ -289,7 +289,7 @@ export default function Home() {
         {/* Image Break */}
         <div className="py-10 sm:py-16 bg-gray-900">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-xl mx-auto">
                      <img src="/11.jpg" alt="Inspiration" className="rounded-2xl shadow-xl w-full object-cover"/>
                 </div>
             </div>
