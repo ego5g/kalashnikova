@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, SVGProps } from 'react';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
 
 const NavLink = ({ href, children, onClick }: { href: string, children: React.ReactNode, onClick?: () => void }) => (
   <a
@@ -40,14 +41,17 @@ const Header = () => {
               </a>
             </div>
 
-            <div>
+            <div className="flex items-center">
               <nav className="hidden md:flex items-center space-x-8">
                 <a href="#about" className="font-medium text-gray-300 hover:text-white transition-colors duration-200">О мне</a>
                 <a href="#programs" className="font-medium text-gray-300 hover:text-white transition-colors duration-200">Программы</a>
                 <a href="#reviews" className="font-medium text-gray-300 hover:text-white transition-colors duration-200">Отзывы</a>
                 <a href="#contact" className="font-medium text-gray-300 hover:text-white transition-colors duration-200">Контакты</a>
               </nav>
-              <div className="md:hidden flex items-center">
+              <div className="ml-4">
+                <ThemeSwitcher />
+              </div>
+              <div className="md:hidden flex items-center ml-4">
                 <button
                   onClick={toggleMenu}
                   className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-all duration-200"
@@ -127,20 +131,20 @@ const certifications = [
 
 export default function Home() {
   return (
-    <div className="bg-black text-white font-sans">
+    <div className="bg-white dark:bg-black text-gray-800 dark:text-white font-sans">
       <Header />
       <main className="pt-16">
         {/* Герой */}
         <section className="relative pt-10 pb-10 sm:pt-16 sm:pb-16 overflow-hidden">
-          <div className="absolute -top-20 -left-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute -top-20 -left-20 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="md:w-1/2 text-center md:text-left">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
                   Тренировки с Дарьей Калашниковой
                 </h1>
-                <p className="mt-6 max-w-lg text-lg sm:text-xl text-gray-300 leading-relaxed">
+                <p className="mt-6 max-w-lg text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
                   Разработанные мной программы позволяют прийти к желанным целям, делая путь максимально эффективным, интересным и безопасным для здоровья.
                 </p>
                 <div className="mt-8 flex justify-center md:justify-start gap-4">
@@ -159,21 +163,21 @@ export default function Home() {
         </section>
 
         {/* О мне */}
-        <section id="about" className="py-10 sm:py-16 bg-black">
+        <section id="about" className="py-10 sm:py-16 bg-gray-50 dark:bg-black">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Обо мне</h2>
-                    <p className="mt-2 text-lg text-gray-400">10 лет в профессиональном спорте и 7 лет тренерской деятельности.</p>
+                    <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Обо мне</h2>
+                    <p className="mt-2 text-lg text-gray-500 dark:text-gray-400">10 лет в профессиональном спорте и 7 лет тренерской деятельности.</p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-8 items-start">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {certifications.map((cert, index) => (
-                            <div key={index} className="bg-gray-800/50 p-6 rounded-xl border border-purple-500/30 shadow-lg hover:shadow-purple-500/20 transition-shadow duration-300">
+                            <div key={index} className="bg-white dark:bg-gray-800/50 p-6 rounded-xl border border-purple-500/10 dark:border-purple-500/30 shadow-lg hover:shadow-purple-500/20 transition-shadow duration-300">
                                 <div className="flex items-start gap-4">
                                     <CheckIcon className="w-6 h-6 text-purple-400 mt-1 flex-shrink-0"/>
                                     <div>
-                                        <h3 className="font-bold text-white text-lg">{cert.title}</h3>
-                                        <p className="text-gray-400 text-sm">{cert.details}</p>
+                                        <h3 className="font-bold text-gray-900 dark:text-white text-lg">{cert.title}</h3>
+                                        <p className="text-gray-600 dark:text-gray-400 text-sm">{cert.details}</p>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +191,7 @@ export default function Home() {
         </section>
 
         {/* Image Divider */}
-        <section className="py-10 sm:py-16 bg-gray-900">
+        <section className="py-10 sm:py-16 bg-gray-100 dark:bg-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="overflow-hidden rounded-lg">
@@ -204,56 +208,56 @@ export default function Home() {
         </section>
 
         {/* Программы */}
-        <section id="programs" className="py-10 sm:py-16 bg-black">
+        <section id="programs" className="py-10 sm:py-16 bg-white dark:bg-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Программы тренировок</h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Программы тренировок</h2>
             </div>
 
             {/* Онлайн */}
             <div className="mb-12">
-              <h3 className="text-2xl sm:text-3xl font-bold text-center text-white mb-8">
+              <h3 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
                 <span className="border-b-2 border-purple-500 pb-2">Онлайн формат</span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="border border-purple-500/30 rounded-lg p-6 bg-gray-800/50 flex flex-col">
-                  <h4 className="text-xl font-bold text-white">Консультация</h4>
-                  <p className="mt-3 text-gray-400 flex-grow">Знакомство, определение цели, помощь в выборе формата.</p>
+                <div className="border border-purple-500/10 dark:border-purple-500/30 rounded-lg p-6 bg-gray-50 dark:bg-gray-800/50 flex flex-col">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">Консультация</h4>
+                  <p className="mt-3 text-gray-600 dark:text-gray-400 flex-grow">Знакомство, определение цели, помощь в выборе формата.</p>
                   <p className="mt-6 text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">БЕСПЛАТНО</p>
                 </div>
-                <div className="border border-purple-500/30 rounded-lg p-6 bg-gray-800/50 flex flex-col">
-                  <h4 className="text-xl font-bold text-white">Ведение (4/мес)</h4>
-                  <p className="mt-3 text-gray-400 flex-grow">Индивидуальный план, постановка техники.</p>
-                  <p className="mt-6 text-3xl font-bold">$50</p>
+                <div className="border border-purple-500/10 dark:border-purple-500/30 rounded-lg p-6 bg-gray-50 dark:bg-gray-800/50 flex flex-col">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">Ведение (4/мес)</h4>
+                  <p className="mt-3 text-gray-600 dark:text-gray-400 flex-grow">Индивидуальный план, постановка техники.</p>
+                  <p className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">$50</p>
                 </div>
-                <div className="border border-purple-500/30 rounded-lg p-6 bg-gray-800/50 flex flex-col">
-                  <h4 className="text-xl font-bold text-white">Ведение (8/мес)</h4>
-                  <p className="mt-3 text-gray-400 flex-grow">Индивидуальный план, постановка техники.</p>
-                  <p className="mt-6 text-3xl font-bold">$90</p>
+                <div className="border border-purple-500/10 dark:border-purple-500/30 rounded-lg p-6 bg-gray-50 dark:bg-gray-800/50 flex flex-col">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">Ведение (8/мес)</h4>
+                  <p className="mt-3 text-gray-600 dark:text-gray-400 flex-grow">Индивидуальный план, постановка техники.</p>
+                  <p className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">$90</p>
                 </div>
-                <div className="border border-purple-500/30 rounded-lg p-6 bg-gray-800/50 flex flex-col">
-                  <h4 className="text-xl font-bold text-white">Ведение (12/мес)</h4>
-                  <p className="mt-3 text-gray-400 flex-grow">Индивидуальный план, постановка техники.</p>
-                  <p className="mt-6 text-3xl font-bold">$120</p>
+                <div className="border border-purple-500/10 dark:border-purple-500/30 rounded-lg p-6 bg-gray-50 dark:bg-gray-800/50 flex flex-col">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">Ведение (12/мес)</h4>
+                  <p className="mt-3 text-gray-600 dark:text-gray-400 flex-grow">Индивидуальный план, постановка техники.</p>
+                  <p className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">$120</p>
                 </div>
-                <div className="border border-blue-500/30 rounded-lg p-6 bg-gray-800/50 flex flex-col md:col-span-2">
-                  <h4 className="text-xl font-bold text-white">Сопровождение (1 месяц)</h4>
-                  <p className="mt-3 text-gray-400 flex-grow">Разработка плана, 1 видео-тренировка в неделю, план на 2 самостоятельные тренировки, обратная связь.</p>
-                  <p className="mt-6 text-3xl font-bold">$100</p>
+                <div className="border border-blue-500/10 dark:border-blue-500/30 rounded-lg p-6 bg-gray-50 dark:bg-gray-800/50 flex flex-col md:col-span-2">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">Сопровождение (1 месяц)</h4>
+                  <p className="mt-3 text-gray-600 dark:text-gray-400 flex-grow">Разработка плана, 1 видео-тренировка в неделю, план на 2 самостоятельные тренировки, обратная связь.</p>
+                  <p className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">$100</p>
                 </div>
-                <div className="border border-blue-500/30 rounded-lg p-6 bg-gray-800/50 flex flex-col md:col-span-2">
-                  <h4 className="text-xl font-bold text-white">30-минутные тренировки (1 месяц)</h4>
-                  <p className="mt-3 text-gray-400 flex-grow">8 тренировок по 30 минут.</p>
-                  <p className="mt-6 text-3xl font-bold">$65</p>
+                <div className="border border-blue-500/10 dark:border-blue-500/30 rounded-lg p-6 bg-gray-50 dark:bg-gray-800/50 flex flex-col md:col-span-2">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">30-минутные тренировки (1 месяц)</h4>
+                  <p className="mt-3 text-gray-600 dark:text-gray-400 flex-grow">8 тренировок по 30 минут.</p>
+                  <p className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">$65</p>
                 </div>
               </div>
             </div>
             {/* Галерея */}
-            <section id="gallery" className="py-4 sm:py-8 bg-gray-900">
+            <section id="gallery" className="py-4 sm:py-8 bg-gray-100 dark:bg-gray-900">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {[10, 2, 3, 13].map((i) => (
-                    <div key={i} className="aspect-video bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+                    <div key={i} className="aspect-video bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
                       <img 
                         src={`/${i}.jpg`} 
                         alt={`Тренировка ${i}`}
@@ -267,19 +271,19 @@ export default function Home() {
 
             {/* Офлайн */}
             <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-center text-white mb-12">
+              <h3 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
                 <span className="border-b-2 border-blue-500 pb-2">Офлайн формат (Тбилиси)</span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div className="border border-blue-500/30 rounded-lg p-6 bg-gray-800/50 flex flex-col">
-                  <h4 className="text-xl font-bold text-white">Персональная тренировка</h4>
-                  <p className="mt-3 text-gray-400 flex-grow">Комплексный план с учетом ваших целей и здоровья. Парк Мзиури/Ваке.</p>
-                  <p className="mt-6 text-3xl font-bold">$12 / тренировка</p>
+                <div className="border border-blue-500/10 dark:border-blue-500/30 rounded-lg p-6 bg-gray-50 dark:bg-gray-800/50 flex flex-col">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">Персональная тренировка</h4>
+                  <p className="mt-3 text-gray-600 dark:text-gray-400 flex-grow">Комплексный план с учетом ваших целей и здоровья. Парк Мзиури/Ваке.</p>
+                  <p className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">$12 / тренировка</p>
                 </div>
-                <div className="border border-blue-500/30 rounded-lg p-6 bg-gray-800/50 flex flex-col">
-                  <h4 className="text-xl font-bold text-white">Тренировка в мини-группе</h4>
-                  <p className="mt-3 text-gray-400 flex-grow">Комбинированные функциональные и силовые тренировки на открытом воздухе.</p>
-                  <p className="mt-6 text-3xl font-bold">$50 / 8 тренировок</p>
+                <div className="border border-blue-500/10 dark:border-blue-500/30 rounded-lg p-6 bg-gray-50 dark:bg-gray-800/50 flex flex-col">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white">Тренировка в мини-группе</h4>
+                  <p className="mt-3 text-gray-600 dark:text-gray-400 flex-grow">Комбинированные функциональные и силовые тренировки на открытом воздухе.</p>
+                  <p className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">$50 / 8 тренировок</p>
                 </div>
               </div>
             </div>
@@ -287,7 +291,7 @@ export default function Home() {
         </section>
 
         {/* Image Break */}
-        <div className="py-10 sm:py-16 bg-gray-900">
+        <div className="py-10 sm:py-16 bg-gray-100 dark:bg-gray-900">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="max-w-xl mx-auto">
                      <img src="/11.jpg" alt="Inspiration" className="rounded-2xl shadow-xl w-full object-cover"/>
@@ -296,22 +300,22 @@ export default function Home() {
         </div>
 
         {/* Отзывы */}
-        <section id="reviews" className="py-10 sm:py-16 bg-black">
+        <section id="reviews" className="py-10 sm:py-16 bg-white dark:bg-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Что говорят клиенты</h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Что говорят клиенты</h2>
             </div>
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-gray-900 p-8 rounded-xl shadow-lg shadow-purple-500/10">
-                <p className="text-gray-300 leading-relaxed">«Я начала тренироваться после хирургической операции в онлайн-формате. Даша внимательно и постепенно наращивала физическую нагрузку. Спустя месяц мы дошли до 5 тренировок в неделю. Занятия проходят в приятной и ненавязчивой обстановке. Набор упражнений регулярно меняется и расширяется, что обеспечивает приятное разнообразие. Я достигла хорошей спортивной формы и не планирую останавливаться на достигнутом. Всем, кто хочет быть красивым и здоровым, очень рекомендую тренировки с Дашей!»</p>
+              <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl shadow-lg shadow-purple-500/10">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">«Я начала тренироваться после хирургической операции в онлайн-формате. Даша внимательно и постепенно наращивала физическую нагрузку. Спустя месяц мы дошли до 5 тренировок в неделю. Занятия проходят в приятной и ненавязчивой обстановке. Набор упражнений регулярно меняется и расширяется, что обеспечивает приятное разнообразие. Я достигла хорошей спортивной формы и не планирую останавливаться на достигнутом. Всем, кто хочет быть красивым и здоровым, очень рекомендую тренировки с Дашей!»</p>
                 <div className="mt-6">
-                  <p className="font-semibold text-white text-lg">Марина</p>
+                  <p className="font-semibold text-gray-900 dark:text-white text-lg">Марина</p>
                 </div>
               </div>
-              <div className="bg-gray-900 p-8 rounded-xl shadow-lg shadow-blue-500/10">
-                <p className="text-gray-300 leading-relaxed">«На мой взгляд, успех тренировки зависит на 50% от своей мотивации и на 50% от тренера. Очень многое зависит от общего настроя, вы с тренером должны быть на одной волне, заинтересованы в процессе и прогрессе. С самого первого занятия меня покорила Дарья своей вовлеченностью, терпением, внимательностью к технике выполнения, своей энергией и физической формой! Приятно смотреть и стремиться к лучшему на примере тренера. С помощью Дарьи я вернулась к регулярным тренировкам, пропускать не хочется, лень пропадает, появилась мотивация становиться лучше!»</p>
+              <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl shadow-lg shadow-blue-500/10">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">«На мой взгляд, успех тренировки зависит на 50% от своей мотивации и на 50% от тренера. Очень многое зависит от общего настроя, вы с тренером должны быть на одной волне, заинтересованы в процессе и прогрессе. С самого первого занятия меня покорила Дарья своей вовлеченностью, терпением, внимательностью к технике выполнения, своей энергией и физической формой! Приятно смотреть и стремиться к лучшему на примере тренера. С помощью Дарьи я вернулась к регулярным тренировкам, пропускать не хочется, лень пропадает, появилась мотивация становиться лучше!»</p>
                 <div className="mt-6">
-                  <p className="font-semibold text-white text-lg">Ирина</p>
+                  <p className="font-semibold text-gray-900 dark:text-white text-lg">Ирина</p>
                 </div>
               </div>
             </div>
@@ -319,7 +323,7 @@ export default function Home() {
         </section>
 
         {/* Контакты */}
-        <section id="contact" className="py-10 sm:py-16 bg-gray-900">
+        <section id="contact" className="py-10 sm:py-16 bg-gray-100 dark:bg-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 md:p-12 text-center">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Контакты и соцсети</h2>
@@ -341,10 +345,10 @@ export default function Home() {
       </main>
 
       {/* Подвал */}
-      <footer className="bg-black border-t border-gray-800">
+      <footer className="bg-white dark:bg-black border-t border-gray-100 dark:border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-          <p className="text-2xl font-bold text-white">Дарья Калашникова</p>
-          <p className="text-gray-500 mt-2">Ваш персональный тренер</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">Дарья Калашникова</p>
+          <p className="text-gray-500 dark:text-gray-500 mt-2">Ваш персональный тренер</p>
           <div className="flex justify-center gap-6 my-6">
             <a href="https://www.instagram.com/kalashnikovadaaa" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
               <InstagramIcon className="w-7 h-7" />
