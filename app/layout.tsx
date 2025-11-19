@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -20,6 +21,36 @@ export const metadata: Metadata = {
     "поддержание формы",
     "Дарья Калашникова",
     "Калашникова",
+    "Тренировки",
+    "Фитнес",
+    "Офлайн",
+    "онлайн",
+    "Похудение",
+    "Питание",
+    "Растяжка",
+    "Силовые",
+    "Онлайн Консультация",
+    "фитнес в Тбилиси",
+    "тренер в Тбилиси",
+    "персональный тренер в Тбилиси",
+    "консультация по питанию",
+    "онлайн-тренер",
+    "Реабилитация после травм",
+    "Коррекция осанки",
+    "Протрузии",
+    "грыжи",
+    "Сердечная недостаточность",
+    "Варикоз",
+    "Диабет",
+    "Работа с ограничениями по здоровью",
+    "Сила и выносливость",
+    "Силовой тренинг",
+    "Функциональный тренинг",
+    "Мягкие виды фитнеса",
+    "Стретчинг",
+    "Восстановление после родов",
+    "Нутрициология",
+    "КМС по лёгкой атлетике"
   ],
   authors: [{ name: "Дарья Калашникова" }],
   creator: "Дарья Калашникова",
@@ -37,11 +68,11 @@ export const metadata: Metadata = {
     description: "Персональные и онлайн тренировки с Дарьей Калашниковой. Программы для похудения, набора массы и поддержания формы.",
     images: [
       {
-        url: "https://trainer.ge/og-image.jpg",
+        url: "/6.webp",
         width: 1200,
         height: 630,
         alt: "Дарья Калашникова",
-        type: "image/jpeg",
+        type: "image/webp",
       },
     ],
   },
@@ -49,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Дарья Калашникова | Персональный фитнес-тренер",
     description: "Персональные и онлайн тренировки с Дарьей Калашниковой",
-    images: ["https://trainer.ge/og-image.jpg"],
+    images: ["/6.webp"],
     creator: "@kalashnikovadaaa",
   },
   robots: {
@@ -104,6 +135,7 @@ export default function RootLayout({
             gtag('config', 'G-VLJQ92L64Q');
           `}
         </Script>
+        <Analytics />
       </body>
     </html>
   );
