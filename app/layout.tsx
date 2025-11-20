@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Дарья Калашникова | Персональный фитнес-тренер",
     description: "Персональные и онлайн тренировки с Дарьей Калашниковой",
-    images: ["/6.webp"],
+    images: ["/13.jpg"],
     creator: "@kalashnikovadaaa",
   },
   robots: {
