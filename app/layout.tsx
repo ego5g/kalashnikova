@@ -3,13 +3,16 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: "Дарья Калашникова | Персональный фитнес-тренер",
-  description: "Персональные и онлайн тренировки с Дарьей Калашниковой. Программы для похудения, набора массы и поддержания формы. КМС по легкой атлетике, сертифицированный тренер.",
+  description:
+    "Персональные и онлайн тренировки с Дарьей Калашниковой. Программы для похудения, набора массы и поддержания формы. КМС по легкой атлетике, сертифицированный тренер.",
   keywords: [
     "тренер",
     "фитнес-тренер",
@@ -50,7 +53,7 @@ export const metadata: Metadata = {
     "Стретчинг",
     "Восстановление после родов",
     "Нутрициология",
-    "КМС по лёгкой атлетике"
+    "КМС по лёгкой атлетике",
   ],
   authors: [{ name: "Дарья Калашникова" }],
   creator: "Дарья Калашникова",
@@ -65,7 +68,8 @@ export const metadata: Metadata = {
     url: "https://trainer.ge",
     siteName: "Дарья Калашникова | Персональный фитнес-тренер",
     title: "Дарья Калашникова | Персональный фитнес-тренер",
-    description: "Персональные и онлайн тренировки с Дарьей Калашниковой. Программы для похудения, набора массы и поддержания формы.",
+    description:
+      "Персональные и онлайн тренировки с Дарьей Калашниковой. Программы для похудения, набора массы и поддержания формы.",
     images: [
       {
         url: "/13.jpg",
@@ -116,13 +120,20 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <meta name="apple-mobile-web-app-title" content="Дарья Калашникова" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          <main className="pt-16">{children}</main>
+          <Footer />
+        </Providers>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-VLJQ92L64Q"
           strategy="afterInteractive"
